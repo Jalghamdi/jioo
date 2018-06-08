@@ -26,7 +26,7 @@ export const addPost = (postData) => dispatch => {
         });
 };
 
-export const getPosts = (postData) => dispatch => {
+export const getPosts = ( postData ) => dispatch => {
     axios.get('/api/posts')
         .then(res => {
             dispatch({
