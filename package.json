@@ -1,8 +1,8 @@
 {
-  "name": "jioo",
+  "name": "sabic18_tst",
   "version": "1.0.0",
-  "description": "SABIC 2018",
-  "main": "index.js",
+  "description": "first app in express for sabic students",
+  "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server/server.js",
@@ -10,7 +10,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "jio",
+  "author": "Gabriel Castillo",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

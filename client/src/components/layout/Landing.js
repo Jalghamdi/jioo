@@ -1,37 +1,43 @@
-import React, {Components} from 'react';
-import Navbar from "./Navbar";
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-class Landing extends   Component {
-    render () {
+class Landing extends Component {
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
+    }
+
+    render() {
         return (
-            <nav classname ="Landing Landing-expand-sm navbar-dark bg-dark mb-4">
-            <div classname="container">
-            <a classname="Landing-brand" href="Landing.html">My Social Network</a>
-        <button classname="Landing-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
-            <span classname="Landing-toggler-icon"></span>
-            </button>
-
-            <div classname="collapse Landing-collapse" id="mobile-nav">
-            <ul classname="Landing-nav mr-auto">
-            <li classname="nav-item">
-            <a classname="nav-link" href="profiles.html"> Developers
-            </a>
-            </li>
-            </ul>
-
-            <ul classname="Landing-nav ml-auto">
-            <li classname="nav-item">
-            <a classname="nav-link" href="register.html">Sign Up</a>
-        </li>
-        <li classname="nav-item">
-            <a classname="nav-link" href="login.html">Login</a>
-            </li>
-            </ul>
+            <div className="landing">
+            <div className="dark-overlay landing-inner text-light">
+            <div className="container">
+            <div className="row">
+            <div className="col-md-12 text-center">
+            <h1 className="display-3 mb-4">Developer Connector
+        </h1>
+        <p className="lead"> Create a developer profile/portfolio, share posts and get help from other developers</p>
+        <hr />
+        <Link to="/register" className="btn btn-lg btn-info mr-2">Sign Up</Link>
+        <Link to="/login" className="btn btn-lg btn-light">Login</Link>
             </div>
             </div>
-            </nav>
-
-    );
+            </div>
+            </div>
+            </div>
+        );
     }
 }
-export default Landing;
+
+Landing.propTypes ={
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+   auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);
